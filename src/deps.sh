@@ -5,7 +5,9 @@ cmd_deps=(
     pwd
     mkdir
     cp
+    tr
     cut
+    grep
     basename
     dirname
     getent

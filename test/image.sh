@@ -17,9 +17,9 @@ postinstall_files_dst=(
     /opt/authorized_keys
 )
 
-# Runs on the host, as root. Dangerous!
+# Runs confined on the host system
 do_install(){
-    pacstrap "$img_dir" "${img_pkgs[@]}"
+    pacstrap -C pacman.conf "$img_dir" "${img_pkgs[@]}"
 }
 
 # Will run inside image via systemd-nspawn

@@ -1,10 +1,20 @@
 img_dir_base=
-img_dir_base_default="./img"
-cfg_subpath=".config/makeimg.conf"
+img_dir=
+img_path=
+src_dir=
+
+SCRIPT=$(basename "$0")
+
+init_vars()
+{
+  img_dir_base="./img"
+  src_dir=$(pwd)
+}
 
 load_cfg()
 {
   local user_home=
+  local cfg_subpath=".config/$SCRIPT.conf"
   if [ "$SUDO_USER" ]; then
     user_home="$(getent passwd "$SUDO_USER" | cut -d: -f6)"
   else
@@ -17,16 +27,17 @@ load_cfg()
   fi
 }
 
-parse_args()
+load_args()
 {
     local arg=$1
-    test -z "$img_dir_base" || return 0
-    img_dir_base=$img_dir_base_default
     test "$arg" || return 0
     img_dir_base=$arg
 }
 
-validate_env(){
-    test -n "$img_name"    || fatal "missing required directive: img_name"
-    declare -f do_install  || fatal "image.sh must define a do_install hook"
+get_img_paths()
+{
+    img_path=$img_dir_base/$img_name
+    img_dir=${img_path%.tar*}
+    printf 'img_path="%s"\n' "$img_path"
+    printf 'img_dir="%s"\n' "$img_dir"
 }

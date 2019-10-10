@@ -1,12 +1,14 @@
 cmd_deps=(
-    cd
     type
+    cd
     id
     pwd
     mkdir
     cp
+    cut
     basename
     dirname
+    getent
     systemd-nspawn
     tar
     gzip

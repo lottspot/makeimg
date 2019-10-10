@@ -4,12 +4,11 @@ main()
 {
     SCRIPT=$(basename "$0")
     test "$(id -u)" -eq 0 || fatal "$SCRIPT must be run as root"
-    stderr_hide
+    load_cfg
     parse_args "$@" || fatal "invalid arguments"
 
     (
         # load image.sh
-        stderr_show
         . image.sh
         stderr_hide
         validate_env    || fatal "invalid build environment"

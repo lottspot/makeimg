@@ -5,7 +5,7 @@ src_dir=
 # prepare the image installation environment
 prepare()
 {
-    img_path=$img_dir_parent/$img_name
+    img_path=$img_dir_base/$img_name
     img_dir=${img_path%.tar*}
     src_dir=$(pwd)
     test -e "$img_dir" || mkdir -p "$img_dir" || error "failred to create directory: $img_dir"

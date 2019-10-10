@@ -2,6 +2,7 @@
 PROG := makeimg
 SRCS := \
   deps/bashlib/src/header.sh  \
+  deps/bashlib/src/cfg.sh     \
   src/print.sh                \
   src/deps.sh                 \
   src/vars.sh                 \

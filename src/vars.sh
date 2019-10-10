@@ -23,7 +23,10 @@ load_cfg()
 
   local cfg_path="$user_home/$cfg_subpath"
   if [ -e "$cfg_path" ]; then
-    . "$cfg_path"
+    cfg_parse "$cfg_path" || error "parsing failure: $cfg_path"
+    local param="$(cfg_get img_dir_base)"
+    test "$param" || return 0
+    img_dir_base=$param
   fi
 }
 

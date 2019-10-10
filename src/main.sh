@@ -14,14 +14,12 @@ main()
         stderr_hide
         validate_env    || fatal "invalid build environment"
         prepare         || fatal "failed to prepare build environment"
-        . image.sh  # allow image.sh to resolve prepared variables
 
         # preinstall stage
         run_files 'preinstall' || fatal "stage: preinstall"
-        run_hook  'preinstall' || fatal "stage: preinstall"
 
         # install stage
-        install || fatal "stage: install"
+        run_hook 'install' || fatal "stage: install"
 
         # postinstall stage
         run_files 'postinstall'       || fatal "stage: postinstall"

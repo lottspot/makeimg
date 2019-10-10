@@ -21,13 +21,6 @@ have_cmd()
     return $?
 }
 
-find_img_cmd()
-{
-    set -- $img_cmd
-    have_cmd $1
-    return $?
-}
-
 for dep in ${cmd_deps[@]}; do
   if ! have_cmd $dep; then
     fatal "missing required command: $dep"

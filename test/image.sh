@@ -1,5 +1,4 @@
 img_name=arch-$(date +%Y.%m.%d).tar.xz
-img_cmd="pacstrap $img_dir ${img_pkgs[@]}"
 
 img_pkgs=(
     base
@@ -17,6 +16,11 @@ postinstall_files_dst=(
     /etc/sudoers.d/admin
     /opt/authorized_keys
 )
+
+# Runs on the host, as root. Dangerous!
+do_install(){
+    pacstrap "$img_dir" "${img_pkgs[@]}"
+}
 
 # Will run inside image via systemd-nspawn
 do_postinstall(){

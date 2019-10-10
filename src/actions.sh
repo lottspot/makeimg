@@ -2,13 +2,6 @@ img_path=
 img_dir=
 src_dir=
 
-# validate user inputs and the build environment
-validate_env(){
-    test -n "$img_name"    || fatal "missing required directive: img_name"
-    test -n "$img_cmd"     || fatal "missing required directive: img_cmd"
-    find_img_cmd           || fatal "missing required command: $(cmd=($img_cmd); printf '%s' ${cmd[0]})"
-}
-
 # prepare the image installation environment
 prepare()
 {
@@ -72,17 +65,6 @@ run_files()
         stderr_hide
     done
     ok "$stage files copied"
-    return 0
-}
-
-install()
-{
-    ok "begin install"
-    info "+ $img_cmd"
-    stderr_show
-    eval "$img_cmd" || { error "install failed"; return 1; }
-    stderr_hide
-    ok "install complete"
     return 0
 }
 

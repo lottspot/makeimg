@@ -1,7 +1,8 @@
 # CentOS image
 
 The resources used to build this sample CentOS image were taken
-directly from a CentOS 8 DVD install medium.
+directly from a CentOS 8 DVD install medium. Alternatively, they
+can be acquired from any [CentOS public mirror](https://www.centos.org/download/mirrors/)
 
 ## Packages
 

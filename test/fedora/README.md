@@ -1,7 +1,8 @@
 # Fedora image
 
 The resources used to build this sample fedora image were taken
-directly from Fedora 30 DVD install medium.
+directly from Fedora 30 DVD install medium. Alternatively, they
+can be acquired from any [Fedora public mirror](https://admin.fedoraproject.org/mirrormanager/)
 
 ## Packages
 

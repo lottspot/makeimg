@@ -7,7 +7,7 @@ SCRIPT=$(basename "$0")
 
 init_vars()
 {
-  img_dir_base="./img"
+  img_dir_base=$(realpath ./img)
   src_dir=$(pwd)
 }
 
@@ -26,7 +26,7 @@ load_cfg()
     cfg_parse "$cfg_path" || error "parsing failure: $cfg_path"
     local param="$(cfg_get img_dir_base)"
     test "$param" || return 0
-    img_dir_base=$param
+    img_dir_base=$(realpath "$param")
   fi
 }
 
@@ -34,7 +34,7 @@ load_args()
 {
     local arg=$1
     test "$arg" || return 0
-    img_dir_base=$arg
+    img_dir_base=$(realpath "$arg")
 }
 
 get_img_paths()

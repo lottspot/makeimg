@@ -16,6 +16,7 @@ cmd_deps=(
     gzip
     bzip2
     xz
+    realpath
 )
 
 have_cmd()

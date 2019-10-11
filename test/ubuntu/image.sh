@@ -4,5 +4,5 @@ img_name=ubuntu-$img_suite
 
 do_install()
 {
-  debootstrap $img_suite "$img_dir/" $img_mirror
+  debootstrap --force-check-gpg --keyring keyrings/ubuntu-archive-keyring.gpg $img_suite "$img_dir/" $img_mirror
 }

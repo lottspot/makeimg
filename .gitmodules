@@ -1,4 +1,3 @@
 [submodule "deps/bashlib"]
 	path = deps/bashlib
 	url = git@github.com:lottspot/bashlib.git
-	branch = master
